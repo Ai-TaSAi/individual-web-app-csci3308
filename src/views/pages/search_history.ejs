@@ -1,0 +1,86 @@
+<%- include('../partials/header') %>
+<%- include('../partials/menu') %>
+<div class="container">
+	<br>
+	<div class="jumbotron">
+		<h1 class="display-6" style="margin:auto"><b>Search History  <i class="fa fa-history" aria-hidden="true"></i></b></h1>
+	</div>
+
+	<table class="table table-bordered" id="stats_table">
+		<tr>
+			<th>Name</th>
+			<th>Rating</th>
+			<th>Genres</th>
+			<th>Synopsis</th>
+			<th>Link</th>
+		</tr>
+		<!-- ITERATE -->
+
+		<% 
+			if (showsList) {
+
+				let finalString = "";
+
+				showsList.forEach(tvShow => {
+					let condenser = "<tr>";
+
+					let showName = tvShow.show_name != null ? tvShow.show_name : '--';
+					let synopsis = tvShow.show_summary != null ? tvShow.show_summary : '--';
+
+					if (synopsis.length > 450) {
+						synopsis = synopsis.slice(0, 450);
+						synopsis += "...";
+					}
+
+					let showURL = tvShow.link_to != null ? tvShow.link_to : '';
+
+					let stringRating = "";
+
+					if (tvShow.rating != null){
+						stringRating = tvShow.rating;
+					} else {
+						stringRating = "--";
+					}
+					
+					let showGenres = "";
+					if (tvShow.genres.length != 0){
+						for (let i = 0; i < tvShow.genres.length; i++){
+							showGenres += tvShow.genres[i] + ", ";
+						}
+						showGenres = showGenres.slice(0, -2);
+					} else {
+						//console.log("THIS SHOW HAS 0 GENRES");
+						showGenres == "--";
+					}
+
+					// console.log("[GENRES]: " + showGenres);
+					// console.log("[ACTUAL]: " + tvShow.genres);
+					// console.log("[LENGTH]: " + tvShow.genres.length);
+					// console.log("");
+
+					condenser += "<td>" + showName + "</td>";
+					condenser += "<td>" + stringRating + "</td>";
+
+					if (tvShow.genres.length != 0){
+						condenser += "<td>" + showGenres + "</td>";
+					} else {
+						condenser += "<td>--</td>";
+					}
+					condenser += "<td>" + synopsis + "</td>";
+					condenser += `<td><a class="btn btn-success" href="${showURL}" role="button"><i class="fa fa-external-link" aria-hidden="true"></i></a></td>`;
+
+					condenser += "</tr>";
+
+					finalString += condenser;
+				}); %>
+
+				<%- finalString %>
+
+			<% } %> 
+
+
+	</table>
+		
+
+</div>
+<%- include('../partials/footer') %>

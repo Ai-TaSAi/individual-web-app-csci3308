@@ -1,0 +1,82 @@
+<%- include('../partials/header') %>
+<%- include('../partials/menu') %>
+	<div class="container">
+		<br>
+		<br>
+		<div class="row">
+			<div class="col-sm-1">
+				<img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRrrLoi8BePUHsgrcyz45wfU2DZ-aFYMIcTTw&usqp=CAU" style="width:60px; height:60px; margin:auto">
+			</div>
+			<!-- <form class="" action="/submit_search" method="post" style="margin:auto; width:1000px"> -->
+
+				<div class="input-group mb-3 col-sm-11">
+					<input type="text" class="form-control" placeholder="Search Query" aria-label="Search Query" aria-describedby="basic-addon2" style="height:60px" name="title" id="002">
+					
+					<div class="input-group-append">
+						<button class="btn btn-success" style="width:150px" name="Submit" value="Submit" onclick="getInfo()"><i class="fa fa-search" aria-hidden="true"></i> Search</button>
+					</div>
+				</div>
+
+			<!-- </form> -->
+		</div>
+
+		<br>
+		<br>
+
+		<div class="row" id="noQuery">
+			<p style="margin: auto; color: #999999"><i class="fa fa-times" aria-hidden="true"></i> No results. -- Enter query to search.</p>
+			<!-- <i class="fa fa-stop-circle-o" style="color: #f0bb41;"></i> -->
+		</div>
+
+		<div class="row" style="width:90vw">
+			<div class="col-sm-2" id="slot1">
+				
+			</div>
+			<div class="col-sm-2" id="slot2">
+				
+			</div>
+			<div class="col-sm-2" id="slot3">
+				
+			</div>
+			<div class="col-sm-2" id="slot4">
+				
+			</div>
+			<div class="col-sm-2" id="slot5">
+				
+			</div>
+		</div>
+
+		<br>
+		<br>
+
+		<div class="row">
+			<button type="button" disabled class="btn btn-outline-success" style="margin: auto" id="commitBTN" data-toggle="modal" data-target="#exampleModal">Add to Search History?</button>
+		</div>
+
+		<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-hidden="true">
+			<div class="modal-dialog" role="document">
+				<div class="modal-content">
+					<div class="modal-header">
+						<h5 class="modal-title">Confirm Choice</h5>
+
+						<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+							<span aria-hidden="true">&times;</span>
+						</button>
+						
+					</div>
+						
+					<div class="modal-footer" style="margin: auto">
+						<button type="button" class="btn btn-secondary" data-dismiss="modal" onclick=""><i class="fa fa-ban" aria-hidden="true"></i> Cancel</button>
+						<button type="button" class="btn btn-success" data-dismiss="modal" onclick="commitToDB()"><i class="fa fa-bookmark" aria-hidden="true"></i> Add</button>
+					</div>
+				</div>
+			</div>
+		</div>
+
+	</div>
+
+<%- include('../partials/footer') %>
+
+<script type="text/javascript"> 
+
+</script>
